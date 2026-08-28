@@ -1,11 +1,10 @@
 {
-  "name": "FG Ultra Media",
-  "short_name": "FG Ultra",
-  "description": "PWA premium de radio y TV con interfaz futurista.",
+  "name": "FG TV",
+  "short_name": "FG TV",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#070811",
-  "theme_color": "#070811",
+  "background_color": "#100519",
+  "theme_color": "#150824",
   "icons": [
     {
       "src": "icons/icon-192.png",

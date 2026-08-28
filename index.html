@@ -1,146 +1,187 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#070811" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="FG Ultra" />
-  <link rel="manifest" href="manifest.webmanifest" />
-  <link rel="icon" href="icons/icon-192.png" />
-  <link rel="apple-touch-icon" href="icons/icon-192.png" />
-  <link rel="stylesheet" href="app.css" />
-  <title>FG Ultra Media</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#150824">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FG TV">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <link rel="icon" href="icons/icon-192.png">
+  <link rel="stylesheet" href="app.css">
+  <title>FG TV</title>
 </head>
 <body>
-  <div class="bg-grid"></div>
-  <div class="glow glow-a"></div>
-  <div class="glow glow-b"></div>
-  <div class="glow glow-c"></div>
+  <div class="app-bg"></div>
+  <div class="light l1"></div>
+  <div class="light l2"></div>
 
-  <div class="app-shell">
-    <aside class="sidebar">
-      <div class="brand-card glass">
-        <div class="logo-wrap">
-          <img id="brandLogo" src="icons/icon-512.png" alt="Logo">
-        </div>
-        <div class="brand-copy">
-          <strong id="brandName">FG Ultra Media</strong>
-          <span>RADIO • TV • STREAM</span>
-        </div>
+  <div class="phone-app">
+    <header class="app-header">
+      <div class="brand">
+        <img id="logoTop" src="icons/icon-192.png" alt="Logo">
+        <strong id="brandName">FG TV</strong>
       </div>
+      <div class="social-mini" id="socialMini">
+        <a id="fbTop" href="#" target="_blank" rel="noopener">f</a>
+        <a id="igTop" href="#" target="_blank" rel="noopener">◎</a>
+        <button id="shareBtn" type="button">↗</button>
+      </div>
+    </header>
 
-      <nav class="nav glass">
-        <button class="nav-item active" data-view="radio">◉ <span>Radio en vivo</span></button>
-        <button class="nav-item" data-view="tv">▣ <span>TV en vivo</span></button>
-      </nav>
+    <main>
+      <section id="homeView" class="view active">
+        <section class="hero-card">
+          <img id="heroBg" class="hero-bg" src="icons/hero-demo.jpg" alt="">
+          <div class="hero-overlay"></div>
+          <div class="hero-copy">
+            <span id="heroKicker">TU SEÑAL EN VIVO</span>
+            <h1 id="heroTitle">Tu universo de música y TV</h1>
+            <p id="heroSubtitle">Disfruta la mejor música y televisión en un solo lugar.</p>
+          </div>
+        </section>
 
-      <section class="glass mini-panel stats-panel">
-        <div class="panel-head">
-          <span>ESTADO</span>
-          <b id="liveBadge">ONLINE</b>
-        </div>
-        <div class="stat-row"><small>Experiencia</small><strong>Ultra Premium</strong></div>
-        <div class="stat-row"><small>Visual</small><strong>Glass + Neon</strong></div>
-        <div class="stat-row"><small>Modo</small><strong>PWA instalable</strong></div>
-      </section>
-
-      <section class="glass mini-panel social-panel">
-        <div class="panel-head"><span>ACCESOS</span></div>
-        <div class="social-links">
-          <a href="#" aria-label="WhatsApp">◍</a>
-          <a href="#" aria-label="Facebook">f</a>
-          <a href="#" aria-label="Instagram">◎</a>
-          <a href="#" aria-label="YouTube">▶</a>
-        </div>
-      </section>
-    </aside>
-
-    <main class="content">
-      <header class="topbar glass">
-        <div>
-          <span class="eyebrow">RADIO • TV • EN VIVO</span>
-          <h1 id="heroTitle">Radio y televisión en una experiencia moderna.</h1>
-          <p id="heroSubtitle">Disfruta audio y televisión en vivo desde una interfaz moderna, rápida y adaptable.</p>
-        </div>
-        <div class="header-actions">
-          <button id="installBtn" class="pill-btn hidden">Instalar PWA</button>
-                  </div>
-      </header>
-
-      <section class="hero-grid">
-        <div class="player-panel glass" id="radioView">
-          <div class="player-top">
-            <div>
-              <span class="eyebrow">REPRODUCTOR DE RADIO</span>
-              <h2 id="trackTitle">Programación en vivo</h2>
-              <p id="trackArtist">FG Ultra Media</p>
+        <section class="live-card">
+          <div class="live-head">
+            <img id="coverImage" src="icons/icon-512.png" alt="Portada">
+            <div class="live-copy">
+              <span id="nowLabel">AHORA SUENA</span>
+              <h2 id="trackTitle">FG Live</h2>
+              <p id="trackSubtitle">La señal que te conecta</p>
             </div>
-            <div class="pulse-badge"><i></i><span>LIVE AUDIO</span></div>
+            <span class="live-pill">EN VIVO</span>
           </div>
 
-          <div class="disk-zone">
-            <div class="ring ring-1"></div>
-            <div class="ring ring-2"></div>
-            <div class="album-art">
-              <img id="coverImage" src="icons/icon-512.png" alt="Cover">
-            </div>
-            <div class="eq-bars" aria-hidden="true">
-              <span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span><span></span><span></span><span></span>
-              <span></span><span></span>
-            </div>
+          <div class="progress-line"><i></i></div>
+
+          <div class="status-row">
+            <span class="red-dot"></span>
+            <b>EN VIVO</b>
+            <span class="grow"></span>
+            <span id="listenersText">● En directo</span>
+          </div>
+
+          <div class="volume-row">
+            <span>🔈</span>
+            <input id="audioVolume" type="range" min="0" max="1" value="0.85" step="0.01" aria-label="Volumen">
+            <span id="volumePercent">85%</span>
           </div>
 
           <div class="player-controls">
-            <button id="audioPlay" class="mega-play" type="button"><span>▶</span></button>
-            <div class="control-copy">
-              <strong>Sonido inmersivo</strong>
-              <small>Ideal para radio online, estudio digital y apps modernas.</small>
-            </div>
+            <button id="prevBtn" class="small-control" type="button" aria-label="Anterior">‹</button>
+            <button id="audioPlay" class="main-control" type="button" aria-label="Reproducir"><span>▶</span></button>
+            <button id="nextBtn" class="small-control" type="button" aria-label="Siguiente">›</button>
           </div>
 
-          <div class="volume-wrap">
-            <span>🔈</span>
-            <input id="audioVolume" type="range" min="0" max="1" value="0.8" step="0.01">
-            <span>🔊</span>
-          </div>
           <audio id="audioEl" preload="none"></audio>
-        </div>
+        </section>
 
+        <section class="quick-grid">
+          <button class="quick-card" data-go="tv" type="button">
+            <span>▣</span>
+            <div><b>TV en vivo</b><small id="tvQuickText">Mira nuestra señal</small></div>
+          </button>
+          <button class="quick-card" data-go="radio" type="button">
+            <span>♫</span>
+            <div><b>Radio</b><small id="radioQuickText">Escucha en directo</small></div>
+          </button>
+        </section>
       </section>
 
-      <section class="glass tv-panel hidden" id="tvView">
-        <div class="tv-head">
-          <div>
-            <span class="eyebrow">TELEVISIÓN EN VIVO</span>
-            <h2 id="tvChannelTitle">Canal principal</h2>
-          </div>
-          <div class="pulse-badge alt"><i></i><span>LIVE TV</span></div>
+      <section id="tvView" class="view">
+        <div class="section-title">
+          <span>TELEVISIÓN</span>
+          <h2 id="tvTitle">FG TV en vivo</h2>
+          <p id="tvSubtitle">Disfruta nuestra señal desde cualquier dispositivo.</p>
         </div>
-        <div class="tv-stage">
+
+        <div class="video-card">
           <video id="videoEl" playsinline controls preload="metadata"></video>
-          <div id="tvPoster" class="tv-poster">
-            <img id="tvLogo" src="icons/icon-512.png" alt="Logo TV">
-            <strong id="tvPosterName">FG Ultra TV</strong>
-            <small>Presiona reproducir para abrir una experiencia de video moderna.</small>
-            <button id="tvPlayBig" type="button">▶ Iniciar canal</button>
+          <div id="videoPoster" class="video-poster">
+            <img id="tvLogo" src="icons/icon-512.png" alt="">
+            <b id="tvPosterName">FG TV</b>
+            <small>Presiona para iniciar la transmisión.</small>
+            <button id="tvPlay" type="button">▶ VER EN VIVO</button>
           </div>
         </div>
+
         <div class="tv-actions">
           <button id="tvReload" type="button">↻ Reconectar</button>
           <button id="tvMute" type="button">🔊 Audio</button>
-          <span id="tvStatus" class="status-chip">LISTO</span>
+        </div>
+
+        <div class="info-card">
+          <span class="live-pill">EN VIVO</span>
+          <h3 id="tvInfoTitle">Programación en directo</h3>
+          <p id="tvInfoText">Tu contenido, siempre disponible.</p>
         </div>
       </section>
 
+      <section id="radioView" class="view">
+        <div class="section-title">
+          <span>RADIO</span>
+          <h2 id="radioTitle">FG Radio</h2>
+          <p id="radioSubtitle">Música, noticias y entretenimiento en vivo.</p>
+        </div>
 
+        <div class="radio-focus">
+          <div class="disc-ring">
+            <img id="radioLogo" src="icons/icon-512.png" alt="">
+          </div>
+          <div class="equalizer" id="equalizer" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <h2 id="radioFocusTitle">FG Live</h2>
+          <p id="radioFocusSubtitle">La señal que te conecta</p>
+          <button id="radioPlay2" class="main-control" type="button"><span>▶</span></button>
+        </div>
+      </section>
+
+      <section id="favoritesView" class="view">
+        <div class="section-title">
+          <span>FAVORITOS</span>
+          <h2>Tu app, tu estilo</h2>
+          <p>Guarda aquí tus accesos favoritos cuando conectemos base de datos.</p>
+        </div>
+        <div class="empty-card">
+          <span>♡</span>
+          <b>Favoritos</b>
+          <p>Esta primera versión deja preparada la sección para la siguiente etapa.</p>
+        </div>
+      </section>
     </main>
+
+    <nav class="bottom-nav">
+      <button class="nav-btn active" data-view="home" type="button"><span>⌂</span><small>Inicio</small></button>
+      <button class="nav-btn" data-view="tv" type="button"><span>▣</span><small>TV en vivo</small></button>
+      <button class="nav-btn" data-view="radio" type="button"><span>♫</span><small>Música</small></button>
+      <button class="nav-btn" data-view="favorites" type="button"><span>♡</span><small>Favoritos</small></button>
+    </nav>
   </div>
 
-  <div id="toast" class="toast"></div>
+  <div id="shareSheet" class="sheet hidden" aria-hidden="true">
+    <div class="sheet-backdrop"></div>
+    <section class="share-panel">
+      <div class="share-head">
+        <div>
+          <span>COMPARTIR</span>
+          <h2>Compartir <b id="shareBrand">FG TV</b></h2>
+          <p id="shareSubtitle">Comparte nuestra señal en vivo.</p>
+        </div>
+        <button id="closeShare" type="button">✕</button>
+      </div>
+      <div class="share-list">
+        <button id="copyLink" type="button"><span>🔗</span><div><b>Copiar enlace</b><small>Comparte la app al instante</small></div></button>
+        <a id="waShare" href="#" target="_blank" rel="noopener"><span>◉</span><div><b>WhatsApp</b><small>Enviar por WhatsApp</small></div></a>
+        <a id="fbShare" href="#" target="_blank" rel="noopener"><span>f</span><div><b>Facebook</b><small>Abrir Facebook</small></div></a>
+        <a id="igShare" href="#" target="_blank" rel="noopener"><span>◎</span><div><b>Instagram</b><small>Abrir Instagram</small></div></a>
+      </div>
+    </section>
+  </div>
 
+  <div id="toast" class="toast" role="status"></div>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
   <script src="app.js"></script>
 </body>

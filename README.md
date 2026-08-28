@@ -1,31 +1,28 @@
-# FG Ultra Media — Clean Edition
+# FG TV Mobile PWA editable
 
-Cambios de esta versión:
+## Rutas
+- App pública: `/`
+- Panel privado: `/admin.html`
 
-- Eliminados de la app pública:
-  - WOW FACTOR
-  - presentación para el cliente
-  - texto de panel administrable
-  - Next-gen
-  - Vercel ready
-  - Sin npm
-  - bloque Producción Visual
-
-- El panel sigue separado en:
-  `/admin.html`
-
-- Logo:
-  - acepta archivos fuente de hasta 20 MB
-  - redimensiona automáticamente a un máximo de 1200 px
-  - comprime/optimiza antes de guardarlo
-  - conserva transparencia cuando el navegador permite WebP
-  - también acepta URL directa, Google Drive, GitHub y Dropbox
+## Todo editable desde el panel
+- Nombre
+- Logo por URL o subida
+- Imagen principal por URL o subida
+- Título y textos
+- Radio URL
+- TV URL / HLS .m3u8
+- Facebook
+- Instagram
+- WhatsApp
+- 3 colores principales
+- Textos de Radio y TV
 
 ## Vercel
-Framework Preset: Other
-Build Command: vacío
-Output Directory: vacío
-Variables de entorno: ninguna
+- Framework Preset: Other
+- Build Command: vacío
+- Output Directory: vacío
+- Variables de entorno: ninguna
 
-IMPORTANTE
-Sin backend, el panel y la app pública comparten configuración únicamente dentro del mismo navegador.
+## Importante
+Esta primera versión guarda los cambios en localStorage del navegador.
+Para administrar la app desde otro teléfono/PC o sincronizar muchos dispositivos se necesita conectar un backend más adelante.

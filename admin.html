@@ -3,105 +3,103 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#070811">
   <meta name="robots" content="noindex,nofollow">
-  <title>Panel privado • FG Ultra Media</title>
+  <meta name="theme-color" content="#150824">
   <link rel="stylesheet" href="admin.css">
+  <title>Panel privado • FG TV</title>
 </head>
 <body>
   <main class="admin-shell">
-    <header class="admin-hero">
+    <header class="admin-head">
       <div>
-        <span class="kicker">PANEL PRIVADO LOCAL</span>
-        <h1>Configuración de FG Ultra Media</h1>
-        <p>Esta página no aparece enlazada en la aplicación pública.</p>
+        <span>PANEL PRIVADO</span>
+        <h1>Editar toda la PWA</h1>
+        <p>Cambia marca, imágenes, textos, streaming, redes y colores.</p>
       </div>
-      <a class="preview-link" href="index.html">Ver aplicación ↗</a>
+      <a href="index.html">Ver app ↗</a>
     </header>
 
-    <section class="layout">
-      <form id="settingsForm" class="panel">
-        <div class="section">
-          <h2>Marca</h2>
-          <label>Nombre
-            <input id="setName" type="text" maxlength="42">
-          </label>
+    <form id="form" class="panel">
+      <section>
+        <h2>Marca e imágenes</h2>
+        <label>Nombre de la app
+          <input id="brandName" type="text">
+        </label>
+        <label>Logo por URL
+          <input id="logo" type="text" placeholder="https://.../logo.png">
+          <small>Acepta enlaces directos, Google Drive y GitHub.</small>
+        </label>
+        <label>O subir logo
+          <input id="logoFile" type="file" accept="image/*">
+          <small>Se optimiza automáticamente.</small>
+        </label>
+        <div class="preview"><span>Logo</span><img id="logoPreview" src="icons/icon-512.png" alt=""></div>
 
-          <label>Logo por enlace
-            <input id="setLogo" type="text" inputmode="url" placeholder="https://.../logo.png">
-            <small>Puedes pegar un PNG/JPG directo, un enlace compartido de Google Drive, GitHub o Dropbox.</small>
-          </label>
+        <label>Imagen de fondo principal por URL
+          <input id="heroBg" type="text" placeholder="https://.../fondo.jpg">
+        </label>
+        <label>O subir fondo principal
+          <input id="heroFile" type="file" accept="image/*">
+          <small>Se optimiza automáticamente.</small>
+        </label>
+        <div class="preview wide"><span>Fondo</span><img id="heroPreview" src="icons/hero-demo.jpg" alt=""></div>
+      </section>
 
-          <div class="or"><span>o</span></div>
+      <section>
+        <h2>Inicio</h2>
+        <label>Texto pequeño superior<input id="heroKicker" type="text"></label>
+        <label>Título principal<input id="heroTitle" type="text"></label>
+        <label>Descripción<textarea id="heroSubtitle" rows="3"></textarea></label>
+      </section>
 
-          <label class="file-label">Subir logo desde este dispositivo
-            <input id="logoFile" type="file" accept="image/png,image/jpeg,image/webp">
-            <small>Puedes subir imágenes grandes. El sistema las optimiza automáticamente antes de guardarlas.</small>
-          </label>
+      <section>
+        <h2>Reproductor</h2>
+        <label>Etiqueta “Ahora suena”<input id="nowLabel" type="text"></label>
+        <label>Nombre / canción actual<input id="trackTitle" type="text"></label>
+        <label>Texto debajo<input id="trackSubtitle" type="text"></label>
+        <label>Texto de estado<input id="listenersText" type="text"></label>
+        <label>URL de radio<input id="radioUrl" type="url" placeholder="https://servidor/stream"></label>
+      </section>
 
-          <div class="preview-box">
-            <div>
-              <span>Vista previa</span>
-              <strong id="previewStatus">Usando logo actual</strong>
-            </div>
-            <img id="logoPreview" src="icons/icon-512.png" alt="Vista previa del logo">
-          </div>
+      <section>
+        <h2>Radio</h2>
+        <label>Título<input id="radioTitle" type="text"></label>
+        <label>Descripción<textarea id="radioSubtitle" rows="2"></textarea></label>
+      </section>
 
-          <label>Título principal
-            <input id="setHero" type="text" maxlength="120">
-          </label>
-          <label>Texto secundario
-            <textarea id="setSubtitle" rows="3" maxlength="200"></textarea>
-          </label>
+      <section>
+        <h2>TV</h2>
+        <label>Título<input id="tvTitle" type="text"></label>
+        <label>Descripción<textarea id="tvSubtitle" rows="2"></textarea></label>
+        <label>URL de TV / .m3u8<input id="tvUrl" type="url" placeholder="https://servidor/canal.m3u8"></label>
+        <label>Título de información<input id="tvInfoTitle" type="text"></label>
+        <label>Texto de información<textarea id="tvInfoText" rows="2"></textarea></label>
+      </section>
+
+      <section>
+        <h2>Redes</h2>
+        <label>Facebook<input id="facebook" type="url" placeholder="https://facebook.com/..."></label>
+        <label>Instagram<input id="instagram" type="url" placeholder="https://instagram.com/..."></label>
+        <label>WhatsApp (número con código país)<input id="whatsapp" type="text" placeholder="50499999999"></label>
+      </section>
+
+      <section>
+        <h2>Colores</h2>
+        <div class="colors">
+          <label>Principal<input id="accent" type="color"></label>
+          <label>Secundario<input id="accent2" type="color"></label>
+          <label>Detalle<input id="accent3" type="color"></label>
         </div>
+      </section>
 
-        <div class="section">
-          <h2>Radio</h2>
-          <label>URL de audio
-            <input id="setAudio" type="url" placeholder="https://servidor/stream">
-          </label>
-          <label>Texto “Ahora al aire”
-            <input id="setTrack" type="text" maxlength="60">
-          </label>
-        </div>
-
-        <div class="section">
-          <h2>Televisión</h2>
-          <label>URL de video / HLS (.m3u8)
-            <input id="setVideo" type="url" placeholder="https://servidor/canal.m3u8">
-          </label>
-          <label>Nombre del canal
-            <input id="setChannel" type="text" maxlength="60">
-          </label>
-        </div>
-
-        <div class="section">
-          <h2>Apariencia</h2>
-          <label>Color principal
-            <input id="setAccent" type="color" value="#8a5cff">
-          </label>
-        </div>
-
-        <div class="actions">
-          <button class="save" type="submit">Guardar cambios</button>
-          <button id="resetBtn" class="reset" type="button">Restablecer demo</button>
-        </div>
-        <p class="warning">Por ahora la configuración sigue siendo local: el panel y la aplicación deben abrirse en el mismo navegador para compartir los cambios.</p>
-      </form>
-
-      <aside class="help panel">
-        <span class="kicker">LOGO</span>
-        <h2>Si un enlace no carga</h2>
-        <p>Algunos sitios bloquean mostrar sus imágenes dentro de otras páginas. Por eso esta versión intenta convertir automáticamente enlaces de Google Drive, GitHub y Dropbox.</p>
-        <p>Si aun así falla, usa <b>Subir logo desde este dispositivo</b>. Es la forma más segura para esta prueba local.</p>
-        <div class="tip">
-          <strong>Para una URL directa</strong>
-          <code>https://sitio.com/mi-logo.png</code>
-        </div>
-      </aside>
-    </section>
+      <div class="actions">
+        <button class="save" type="submit">Guardar todos los cambios</button>
+        <button id="reset" class="reset" type="button">Restablecer demo</button>
+      </div>
+      <p class="note">Esta versión funciona sin Supabase: los cambios se guardan en este navegador. Después podemos conectar un backend para administrarla desde otro dispositivo.</p>
+    </form>
   </main>
-  <div id="toast" class="toast" role="status"></div>
+  <div id="toast" class="toast"></div>
   <script src="admin.js"></script>
 </body>
 </html>
