@@ -63,12 +63,11 @@
         <div>
           <span class="eyebrow">PRESENTACIÓN DE ÚLTIMA GENERACIÓN</span>
           <h1 id="heroTitle">Una app que se ve brutal desde el primer segundo.</h1>
-          <p id="heroSubtitle">Diseño elegante, futurista y totalmente administrable para radio y televisión en una sola experiencia.</p>
+          <p id="heroSubtitle">Diseño elegante, futurista y creado para disfrutar radio y televisión en una sola experiencia.</p>
         </div>
         <div class="header-actions">
           <button id="installBtn" class="pill-btn hidden">Instalar PWA</button>
-          <button id="adminBtn" class="pill-btn primary">Administrar</button>
-        </div>
+                  </div>
       </header>
 
       <section class="hero-grid">
@@ -126,8 +125,8 @@
               <small>Cambia entre audio en vivo y video en vivo sin salir de la app.</small>
             </article>
             <article>
-              <b>Panel local administrable</b>
-              <small>Nombre, logo, streaming, textos, colores y canal editable desde el engranaje.</small>
+              <b>Identidad totalmente personalizada</b>
+              <small>Logo, nombre, colores y contenido integrados en una experiencia limpia y profesional.</small>
             </article>
           </div>
           <div class="metric-band">
@@ -177,67 +176,6 @@
     </main>
   </div>
 
-  <aside id="adminPanel" class="admin-panel" aria-hidden="true">
-    <div class="admin-top">
-      <div>
-        <span>PANEL LOCAL</span>
-        <h2>Configuración visual</h2>
-      </div>
-      <button id="closeAdmin" class="close-btn" type="button">✕</button>
-    </div>
-
-    <form id="settingsForm">
-      <div class="section-block">
-        <h3>Marca</h3>
-        <label>Nombre
-          <input id="setName" type="text" maxlength="42">
-        </label>
-        <label>Logo por URL
-          <input id="setLogo" type="url" placeholder="https://.../logo.png">
-        </label>
-        <label>Título principal
-          <input id="setHero" type="text" maxlength="120">
-        </label>
-        <label>Texto secundario
-          <textarea id="setSubtitle" rows="3" maxlength="200"></textarea>
-        </label>
-      </div>
-
-      <div class="section-block">
-        <h3>Radio</h3>
-        <label>URL de audio
-          <input id="setAudio" type="url" placeholder="https://servidor/stream">
-        </label>
-        <label>Texto ahora al aire
-          <input id="setTrack" type="text" maxlength="60">
-        </label>
-      </div>
-
-      <div class="section-block">
-        <h3>TV</h3>
-        <label>URL de video / HLS .m3u8
-          <input id="setVideo" type="url" placeholder="https://servidor/canal.m3u8">
-        </label>
-        <label>Nombre del canal
-          <input id="setChannel" type="text" maxlength="60">
-        </label>
-      </div>
-
-      <div class="section-block">
-        <h3>Apariencia</h3>
-        <label>Color principal
-          <input id="setAccent" type="color" value="#8a5cff">
-        </label>
-      </div>
-
-      <div class="actions-row">
-        <button class="save-btn" type="submit">Guardar</button>
-        <button id="resetBtn" class="ghost-btn" type="button">Restablecer demo</button>
-      </div>
-      <p class="note">Esta versión guarda los cambios en este navegador. Más adelante la conectamos a un backend para administración remota real.</p>
-    </form>
-  </aside>
-  <div id="scrim" class="scrim hidden"></div>
   <div id="toast" class="toast"></div>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
