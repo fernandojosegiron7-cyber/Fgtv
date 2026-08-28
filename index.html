@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#070811" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="FG Ultra" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="app.css" />
+  <title>FG Ultra Media</title>
+</head>
+<body>
+  <div class="bg-grid"></div>
+  <div class="glow glow-a"></div>
+  <div class="glow glow-b"></div>
+  <div class="glow glow-c"></div>
+
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-card glass">
+        <div class="logo-wrap">
+          <img id="brandLogo" src="icons/icon-512.png" alt="Logo">
+        </div>
+        <div class="brand-copy">
+          <strong id="brandName">FG Ultra Media</strong>
+          <span>RADIO • TV • STREAM</span>
+        </div>
+      </div>
+
+      <nav class="nav glass">
+        <button class="nav-item active" data-view="radio">◉ <span>Radio en vivo</span></button>
+        <button class="nav-item" data-view="tv">▣ <span>TV en vivo</span></button>
+        <button class="nav-item" data-view="showcase">✦ <span>Presentación</span></button>
+      </nav>
+
+      <section class="glass mini-panel stats-panel">
+        <div class="panel-head">
+          <span>ESTADO</span>
+          <b id="liveBadge">ONLINE</b>
+        </div>
+        <div class="stat-row"><small>Experiencia</small><strong>Ultra Premium</strong></div>
+        <div class="stat-row"><small>Visual</small><strong>Glass + Neon</strong></div>
+        <div class="stat-row"><small>Modo</small><strong>PWA instalable</strong></div>
+      </section>
+
+      <section class="glass mini-panel social-panel">
+        <div class="panel-head"><span>ACCESOS</span></div>
+        <div class="social-links">
+          <a href="#" aria-label="WhatsApp">◍</a>
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="YouTube">▶</a>
+        </div>
+      </section>
+    </aside>
+
+    <main class="content">
+      <header class="topbar glass">
+        <div>
+          <span class="eyebrow">PRESENTACIÓN DE ÚLTIMA GENERACIÓN</span>
+          <h1 id="heroTitle">Una app que se ve brutal desde el primer segundo.</h1>
+          <p id="heroSubtitle">Diseño elegante, futurista y totalmente administrable para radio y televisión en una sola experiencia.</p>
+        </div>
+        <div class="header-actions">
+          <button id="installBtn" class="pill-btn hidden">Instalar PWA</button>
+          <button id="adminBtn" class="pill-btn primary">Administrar</button>
+        </div>
+      </header>
+
+      <section class="hero-grid">
+        <div class="player-panel glass" id="radioView">
+          <div class="player-top">
+            <div>
+              <span class="eyebrow">REPRODUCTOR DE RADIO</span>
+              <h2 id="trackTitle">Programación en vivo</h2>
+              <p id="trackArtist">FG Ultra Media</p>
+            </div>
+            <div class="pulse-badge"><i></i><span>LIVE AUDIO</span></div>
+          </div>
+
+          <div class="disk-zone">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="album-art">
+              <img id="coverImage" src="icons/icon-512.png" alt="Cover">
+            </div>
+            <div class="eq-bars" aria-hidden="true">
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span><span></span><span></span><span></span>
+              <span></span><span></span>
+            </div>
+          </div>
+
+          <div class="player-controls">
+            <button id="audioPlay" class="mega-play" type="button"><span>▶</span></button>
+            <div class="control-copy">
+              <strong>Sonido inmersivo</strong>
+              <small>Ideal para radio online, estudio digital y apps modernas.</small>
+            </div>
+          </div>
+
+          <div class="volume-wrap">
+            <span>🔈</span>
+            <input id="audioVolume" type="range" min="0" max="1" value="0.8" step="0.01">
+            <span>🔊</span>
+          </div>
+          <audio id="audioEl" preload="none"></audio>
+        </div>
+
+        <div class="glass showcase-card" id="showcaseView">
+          <div class="showcase-head">
+            <span class="eyebrow">WOW FACTOR</span>
+            <h3>Una presentación para enamorar al cliente.</h3>
+          </div>
+          <div class="feature-stack">
+            <article>
+              <b>Diseño cinematográfico</b>
+              <small>Fondos con brillos dinámicos, tarjetas premium y sensación de app de alto nivel.</small>
+            </article>
+            <article>
+              <b>Radio + TV en una sola PWA</b>
+              <small>Cambia entre audio en vivo y video en vivo sin salir de la app.</small>
+            </article>
+            <article>
+              <b>Panel local administrable</b>
+              <small>Nombre, logo, streaming, textos, colores y canal editable desde el engranaje.</small>
+            </article>
+          </div>
+          <div class="metric-band">
+            <div><span>UI</span><strong>Next-gen</strong></div>
+            <div><span>Deploy</span><strong>Vercel ready</strong></div>
+            <div><span>Build</span><strong>Sin npm</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="glass tv-panel hidden" id="tvView">
+        <div class="tv-head">
+          <div>
+            <span class="eyebrow">TELEVISIÓN EN VIVO</span>
+            <h2 id="tvChannelTitle">Canal principal</h2>
+          </div>
+          <div class="pulse-badge alt"><i></i><span>LIVE TV</span></div>
+        </div>
+        <div class="tv-stage">
+          <video id="videoEl" playsinline controls preload="metadata"></video>
+          <div id="tvPoster" class="tv-poster">
+            <img id="tvLogo" src="icons/icon-512.png" alt="Logo TV">
+            <strong id="tvPosterName">FG Ultra TV</strong>
+            <small>Presiona reproducir para abrir una experiencia de video moderna.</small>
+            <button id="tvPlayBig" type="button">▶ Iniciar canal</button>
+          </div>
+        </div>
+        <div class="tv-actions">
+          <button id="tvReload" type="button">↻ Reconectar</button>
+          <button id="tvMute" type="button">🔊 Audio</button>
+          <span id="tvStatus" class="status-chip">LISTO</span>
+        </div>
+      </section>
+
+      <section class="bottom-grid">
+        <div class="glass info-banner">
+          <span class="eyebrow">PRODUCCIÓN VISUAL</span>
+          <h3>Hecha para que digan: “qué hermosa se ve esta app”.</h3>
+          <p>Base perfecta para luego agregar metadatos reales, historial, varios canales, redes sociales, panel remoto, noticias y branding completo.</p>
+        </div>
+        <div class="glass install-card">
+          <span class="eyebrow">LISTA PARA INSTALAR</span>
+          <h3>PWA</h3>
+          <p>Se puede abrir en móvil, PC y televisores con navegador, y en equipos compatibles se instala como aplicación.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <aside id="adminPanel" class="admin-panel" aria-hidden="true">
+    <div class="admin-top">
+      <div>
+        <span>PANEL LOCAL</span>
+        <h2>Configuración visual</h2>
+      </div>
+      <button id="closeAdmin" class="close-btn" type="button">✕</button>
+    </div>
+
+    <form id="settingsForm">
+      <div class="section-block">
+        <h3>Marca</h3>
+        <label>Nombre
+          <input id="setName" type="text" maxlength="42">
+        </label>
+        <label>Logo por URL
+          <input id="setLogo" type="url" placeholder="https://.../logo.png">
+        </label>
+        <label>Título principal
+          <input id="setHero" type="text" maxlength="120">
+        </label>
+        <label>Texto secundario
+          <textarea id="setSubtitle" rows="3" maxlength="200"></textarea>
+        </label>
+      </div>
+
+      <div class="section-block">
+        <h3>Radio</h3>
+        <label>URL de audio
+          <input id="setAudio" type="url" placeholder="https://servidor/stream">
+        </label>
+        <label>Texto ahora al aire
+          <input id="setTrack" type="text" maxlength="60">
+        </label>
+      </div>
+
+      <div class="section-block">
+        <h3>TV</h3>
+        <label>URL de video / HLS .m3u8
+          <input id="setVideo" type="url" placeholder="https://servidor/canal.m3u8">
+        </label>
+        <label>Nombre del canal
+          <input id="setChannel" type="text" maxlength="60">
+        </label>
+      </div>
+
+      <div class="section-block">
+        <h3>Apariencia</h3>
+        <label>Color principal
+          <input id="setAccent" type="color" value="#8a5cff">
+        </label>
+      </div>
+
+      <div class="actions-row">
+        <button class="save-btn" type="submit">Guardar</button>
+        <button id="resetBtn" class="ghost-btn" type="button">Restablecer demo</button>
+      </div>
+      <p class="note">Esta versión guarda los cambios en este navegador. Más adelante la conectamos a un backend para administración remota real.</p>
+    </form>
+  </aside>
+  <div id="scrim" class="scrim hidden"></div>
+  <div id="toast" class="toast"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@1.5.18/dist/hls.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
