@@ -1,23 +1,25 @@
-# FG Ultra Media PWA — Panel privado + Logo Fix
+# FG Ultra Media — Clean Edition
 
-## Cambios
-- El botón "Administrar" fue eliminado completamente de la aplicación pública.
-- También se eliminaron textos públicos que indicaban que la app era administrable.
-- El panel está separado en `/admin.html`.
-- El logo ahora acepta:
-  - URL directa PNG/JPG/WEBP
-  - enlaces compartidos de Google Drive
-  - enlaces `blob` de GitHub, convertidos a raw
-  - enlaces de Dropbox
-  - subida de imagen desde el dispositivo (máximo 1.5 MB)
-- Si una URL externa bloquea la imagen, el panel lo avisa.
+Cambios de esta versión:
 
-## Abrir
-Aplicación pública:
-`https://tu-dominio.vercel.app`
+- Eliminados de la app pública:
+  - WOW FACTOR
+  - presentación para el cliente
+  - texto de panel administrable
+  - Next-gen
+  - Vercel ready
+  - Sin npm
+  - bloque Producción Visual
 
-Panel privado local:
-`https://tu-dominio.vercel.app/admin.html`
+- El panel sigue separado en:
+  `/admin.html`
+
+- Logo:
+  - acepta archivos fuente de hasta 20 MB
+  - redimensiona automáticamente a un máximo de 1200 px
+  - comprime/optimiza antes de guardarlo
+  - conserva transparencia cuando el navegador permite WebP
+  - también acepta URL directa, Google Drive, GitHub y Dropbox
 
 ## Vercel
 Framework Preset: Other
@@ -25,5 +27,5 @@ Build Command: vacío
 Output Directory: vacío
 Variables de entorno: ninguna
 
-IMPORTANTE:
-Como todavía no hay backend, los cambios del panel se guardan en el navegador mediante localStorage.
+IMPORTANTE
+Sin backend, el panel y la app pública comparten configuración únicamente dentro del mismo navegador.

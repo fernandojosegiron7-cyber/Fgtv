@@ -2,8 +2,8 @@
   const DEFAULTS = {
     name: 'FG Ultra Media',
     logo: 'icons/icon-512.png',
-    hero: 'Una app que se ve brutal desde el primer segundo.',
-    subtitle: 'Diseño elegante, futurista y creado para disfrutar radio y televisión en una sola experiencia.',
+    hero: 'Radio y televisión en una experiencia moderna.',
+    subtitle: 'Disfruta audio y televisión en vivo desde una interfaz moderna, rápida y adaptable.',
     audio: '',
     track: 'Programación en vivo',
     video: '',
@@ -88,7 +88,6 @@
     document.querySelectorAll('.nav-item').forEach(btn => btn.classList.toggle('active', btn.dataset.view === view));
     $('radioView').classList.toggle('hidden', view !== 'radio');
     $('tvView').classList.toggle('hidden', view !== 'tv');
-    $('showcaseView').classList.toggle('hidden', view === 'tv');
   }
 
   document.querySelectorAll('.nav-item').forEach(btn => {
