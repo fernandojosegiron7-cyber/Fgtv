@@ -1,183 +1,160 @@
 (() => {
   const DEFAULTS = {
-    brandName: "FG TV",
-    logo: "icons/icon-512.png",
-    heroBg: "icons/hero-demo.jpg",
-    heroKicker: "TU SEÑAL EN VIVO",
-    heroTitle: "Tu universo de música y TV",
-    heroSubtitle: "Disfruta la mejor música y televisión en un solo lugar.",
-    nowLabel: "AHORA SUENA",
-    trackTitle: "FG Live",
-    trackSubtitle: "La señal que te conecta",
-    listenersText: "● En directo",
-    radioTitle: "FG Radio",
-    radioSubtitle: "Música, noticias y entretenimiento en vivo.",
-    tvTitle: "FG TV en vivo",
-    tvSubtitle: "Disfruta nuestra señal desde cualquier dispositivo.",
-    tvInfoTitle: "Programación en directo",
-    tvInfoText: "Tu contenido, siempre disponible.",
-    radioUrl: "",
-    tvUrl: "",
-    accent: "#ff2f92",
-    accent2: "#8f35ff",
-    accent3: "#ff8a25",
-    facebook: "",
-    instagram: "",
-    whatsapp: ""
+    brand:"FG TV",
+    logo:"assets/logo-demo.png",
+    heroImage:"assets/hero-demo.jpg",
+    splashColor:"#fff200",
+    splashSeconds:1.6,
+    heroTitle:"Tu Universo\nde Música",
+    heroSubtitle:"Descubre nuevos sonidos y disfruta nuestra señal en vivo.",
+    trackTitle:"FG Live",
+    trackArtist:"Transmisión en vivo",
+    listenersLabel:"3 oyentes",
+    stationLabel:"FG TV",
+    radioUrl:"",
+    tvUrl:"",
+    tvTitle:"Televisión en vivo",
+    tvKicker:"EN VIVO",
+    tvHeadline:"Tu señal, donde estés",
+    tvSubtitle:"Mira nuestra programación desde tu dispositivo.",
+    tvChannel:"FG TV",
+    facebook:"",
+    instagram:"",
+    whatsapp:"",
+    pink:"#ff3e9d",
+    pink2:"#ff5fb4",
+    deep:"#230039",
+    deep2:"#390054"
   };
 
   const $ = id => document.getElementById(id);
-  const state = { cfg: load(), hls: null, playing:false };
+  const state = { cfg:load(), hls:null };
 
   function load(){
-    try { return { ...DEFAULTS, ...JSON.parse(localStorage.getItem("fgTvMobileConfig") || "{}") }; }
-    catch { return { ...DEFAULTS }; }
+    try{return {...DEFAULTS,...JSON.parse(localStorage.getItem("fgReferenceConfig")||"{}")}}
+    catch{return {...DEFAULTS}}
   }
-
   function toast(msg){
     const t=$("toast");t.textContent=msg;t.classList.add("show");
-    clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2300);
+    clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2200)
   }
-
-  function normImage(v,fallback){
+  function normalize(v,fallback){
     const s=String(v||"").trim();
-    if(!s) return fallback;
-    if(/^(data:image\/|blob:|icons\/|\.\/|\.\.\/)/i.test(s)) return s;
+    if(!s)return fallback;
+    if(/^(data:image\/|assets\/|\.\/|\.\.\/)/i.test(s))return s;
     const gd=s.match(/drive\.google\.com\/file\/d\/([^/]+)/i);
-    if(gd) return `https://drive.google.com/uc?export=view&id=${gd[1]}`;
+    if(gd)return`https://drive.google.com/uc?export=view&id=${gd[1]}`;
     const gh=s.match(/^https:\/\/github\.com\/([^/]+)\/([^/]+)\/blob\/([^/]+)\/(.+)$/i);
-    if(gh) return `https://raw.githubusercontent.com/${gh[1]}/${gh[2]}/${gh[3]}/${gh[4]}`;
+    if(gh)return`https://raw.githubusercontent.com/${gh[1]}/${gh[2]}/${gh[3]}/${gh[4]}`;
     return s;
   }
-
   function setImg(el,src,fallback){
-    if(!el)return;
-    el.onerror=()=>{el.onerror=null;el.src=fallback;};
-    el.src=normImage(src,fallback);
+    el.onerror=()=>{el.onerror=null;el.src=fallback};
+    el.src=normalize(src,fallback)
   }
-
-  function socialLink(url){ return url && /^https?:\/\//i.test(url) ? url : "#"; }
-
+  function social(url){return /^https?:\/\//i.test(String(url||""))?url:"#"}
   function apply(){
     const c=state.cfg;
-    document.documentElement.style.setProperty("--accent",c.accent);
-    document.documentElement.style.setProperty("--accent2",c.accent2);
-    document.documentElement.style.setProperty("--accent3",c.accent3);
-    $("brandName").textContent=c.brandName;
-    $("shareBrand").textContent=c.brandName;
-    $("heroKicker").textContent=c.heroKicker;
-    $("heroTitle").textContent=c.heroTitle;
+    document.documentElement.style.setProperty("--pink",c.pink);
+    document.documentElement.style.setProperty("--pink2",c.pink2);
+    document.documentElement.style.setProperty("--deep",c.deep);
+    document.documentElement.style.setProperty("--deep2",c.deep2);
+    document.documentElement.style.setProperty("--splash",c.splashColor);
+
+    $("topBrand").textContent=c.brand;
+    $("shareBrand").textContent=c.brand;
+    $("heroTitle").innerHTML=c.heroTitle.split("\n").map(x=>x.replace(/</g,"&lt;")).join("<br>");
     $("heroSubtitle").textContent=c.heroSubtitle;
-    $("nowLabel").textContent=c.nowLabel;
     $("trackTitle").textContent=c.trackTitle;
-    $("trackSubtitle").textContent=c.trackSubtitle;
-    $("listenersText").textContent=c.listenersText;
-    $("radioTitle").textContent=c.radioTitle;
-    $("radioSubtitle").textContent=c.radioSubtitle;
-    $("radioFocusTitle").textContent=c.trackTitle;
-    $("radioFocusSubtitle").textContent=c.trackSubtitle;
+    $("trackArtist").textContent=c.trackArtist;
+    $("listenersLabel").textContent=c.listenersLabel;
+    $("stationLabel").textContent=c.stationLabel;
     $("tvTitle").textContent=c.tvTitle;
+    $("tvKicker").textContent=c.tvKicker;
+    $("tvHeadline").textContent=c.tvHeadline;
     $("tvSubtitle").textContent=c.tvSubtitle;
-    $("tvPosterName").textContent=c.brandName;
-    $("tvInfoTitle").textContent=c.tvInfoTitle;
-    $("tvInfoText").textContent=c.tvInfoText;
-    setImg($("logoTop"),c.logo,"icons/icon-192.png");
-    setImg($("coverImage"),c.logo,"icons/icon-512.png");
-    setImg($("radioLogo"),c.logo,"icons/icon-512.png");
-    setImg($("tvLogo"),c.logo,"icons/icon-512.png");
-    setImg($("heroBg"),c.heroBg,"icons/hero-demo.jpg");
+    $("tvChannel").textContent=c.tvChannel;
+
+    setImg($("splashLogo"),c.logo,"assets/logo-demo.png");
+    setImg($("trackCover"),c.logo,"assets/logo-demo.png");
+    setImg($("tvLogo"),c.logo,"assets/logo-demo.png");
+    setImg($("heroImage"),c.heroImage,"assets/hero-demo.jpg");
+    setImg($("tvHeroImage"),c.heroImage,"assets/hero-demo.jpg");
+
     $("audioEl").src=c.radioUrl||"";
-    $("fbTop").href=socialLink(c.facebook);
-    $("igTop").href=socialLink(c.instagram);
-    $("fbShare").href=socialLink(c.facebook);
-    $("igShare").href=socialLink(c.instagram);
-    $("waShare").href=c.whatsapp ? `https://wa.me/${c.whatsapp.replace(/\D/g,"")}?text=${encodeURIComponent("Mira "+c.brandName+": "+location.href)}` : "#";
-  }
+    $("topFacebook").href=social(c.facebook);
+    $("topInstagram").href=social(c.instagram);
+    $("shareFacebook").href=social(c.facebook);
+    $("shareInstagram").href=social(c.instagram);
+    $("shareWhatsapp").href=c.whatsapp?`https://wa.me/${c.whatsapp.replace(/\D/g,"")}?text=${encodeURIComponent("Mira "+c.brand+": "+location.href)}`:"#";
 
-  function showView(name){
-    document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
-    const map={home:"homeView",tv:"tvView",radio:"radioView",favorites:"favoritesView"};
-    $(map[name]||"homeView").classList.add("active");
-    document.querySelectorAll(".nav-btn").forEach(b=>b.classList.toggle("active",b.dataset.view===name));
-    window.scrollTo({top:0,behavior:"smooth"});
+    setTimeout(()=>$("splash").classList.add("hide"),Math.max(.2,Number(c.splashSeconds)||1.6)*1000);
   }
-
-  document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.view)));
-  document.querySelectorAll(".quick-card").forEach(b=>b.addEventListener("click",()=>showView(b.dataset.go)));
 
   const audio=$("audioEl");
-  audio.volume=.85;
-  $("audioVolume").addEventListener("input",e=>{
+  audio.volume=1;
+  $("volume").addEventListener("input",e=>{
     audio.volume=Number(e.target.value);
-    $("volumePercent").textContent=Math.round(audio.volume*100)+"%";
+    $("volumePct").textContent=Math.round(audio.volume*100)+"%"
   });
-
-  function audioUI(playing){
-    state.playing=playing;
-    $("audioPlay").querySelector("span").textContent=playing?"❚❚":"▶";
-    $("radioPlay2").querySelector("span").textContent=playing?"❚❚":"▶";
-    $("radioView").querySelector(".radio-focus").classList.toggle("playing",playing);
-  }
-
-  async function toggleAudio(){
-    if(!state.cfg.radioUrl){toast("Configura primero la URL de radio en /admin.html");return;}
+  function setPlay(playing){$("playBtn").querySelector("span").textContent=playing?"❚❚":"▶"}
+  $("playBtn").addEventListener("click",async()=>{
+    if(!state.cfg.radioUrl){toast("Configura la URL de radio en /admin.html");return}
     try{
-      if(audio.paused){await audio.play();audioUI(true);}
-      else{audio.pause();audioUI(false);}
-    }catch{toast("No se pudo iniciar la señal de radio.");}
-  }
+      if(audio.paused){await audio.play();setPlay(true)}
+      else{audio.pause();setPlay(false)}
+    }catch{toast("No se pudo iniciar la señal de radio.")}
+  });
+  audio.addEventListener("playing",()=>setPlay(true));
+  audio.addEventListener("pause",()=>setPlay(false));
+  $("prevBtn").addEventListener("click",()=>toast("Control preparado."));
+  $("nextBtn").addEventListener("click",()=>toast("Control preparado."));
 
-  $("audioPlay").addEventListener("click",toggleAudio);
-  $("radioPlay2").addEventListener("click",toggleAudio);
-  $("prevBtn").addEventListener("click",()=>toast("Control listo para futuras funciones."));
-  $("nextBtn").addEventListener("click",()=>toast("Control listo para futuras funciones."));
-  audio.addEventListener("playing",()=>audioUI(true));
-  audio.addEventListener("pause",()=>audioUI(false));
+  function showScreen(name){
+    $("radioScreen").classList.toggle("active",name==="radio");
+    $("tvScreen").classList.toggle("active",name==="tv");
+    document.querySelectorAll(".mode-btn").forEach(b=>b.classList.toggle("active",b.dataset.screen===name));
+    window.scrollTo({top:0,behavior:"smooth"})
+  }
+  document.querySelectorAll(".mode-btn").forEach(b=>b.addEventListener("click",()=>showScreen(b.dataset.screen)));
+  $("backToRadio").addEventListener("click",()=>showScreen("radio"));
 
   const video=$("videoEl");
-  function destroyHls(){
-    if(state.hls){state.hls.destroy();state.hls=null;}
-    video.removeAttribute("src");video.load();
-  }
-  function playTv(){
+  function destroyHls(){if(state.hls){state.hls.destroy();state.hls=null}video.removeAttribute("src");video.load()}
+  function playTV(){
     destroyHls();
     const url=state.cfg.tvUrl;
-    if(!url){toast("Configura primero la URL de TV en /admin.html");return;}
-    $("videoPoster").classList.add("hidden");
-    if(/\.m3u8($|\?)/i.test(url) && window.Hls && Hls.isSupported()){
+    if(!url){toast("Configura la URL de TV en /admin.html");return}
+    $("videoPoster").style.display="none";
+    if(/\.m3u8($|\?)/i.test(url)&&window.Hls&&Hls.isSupported()){
       state.hls=new Hls({enableWorker:true,lowLatencyMode:true});
       state.hls.loadSource(url);state.hls.attachMedia(video);
       state.hls.on(Hls.Events.MANIFEST_PARSED,()=>video.play().catch(()=>{}));
-      state.hls.on(Hls.Events.ERROR,(_e,d)=>{if(d.fatal)toast("No se pudo cargar la señal HLS.");});
-    }else{
-      video.src=url;video.play().catch(()=>{});
-    }
+      state.hls.on(Hls.Events.ERROR,(_e,d)=>{if(d.fatal)toast("No se pudo cargar la señal HLS.")})
+    }else{video.src=url;video.play().catch(()=>{})}
   }
-  $("tvPlay").addEventListener("click",playTv);
-  $("tvReload").addEventListener("click",playTv);
+  $("tvPlay").addEventListener("click",playTV);
+  $("tvReload").addEventListener("click",playTV);
   $("tvMute").addEventListener("click",()=>{
     video.muted=!video.muted;
-    $("tvMute").textContent=video.muted?"🔇 Silencio":"🔊 Audio";
+    $("tvMute").textContent=video.muted?"🔇 Silencio":"🔊 Audio"
   });
 
-  function openShare(){$("shareSheet").classList.remove("hidden");$("shareSheet").setAttribute("aria-hidden","false")}
-  function closeShare(){$("shareSheet").classList.add("hidden");$("shareSheet").setAttribute("aria-hidden","true")}
-  $("shareBtn").addEventListener("click",openShare);
-  $("closeShare").addEventListener("click",closeShare);
-  document.querySelector(".sheet-backdrop").addEventListener("click",closeShare);
+  $("shareOpen").addEventListener("click",()=>$("shareScreen").classList.add("open"));
+  $("shareClose").addEventListener("click",()=>$("shareScreen").classList.remove("open"));
   $("copyLink").addEventListener("click",async()=>{
-    try{await navigator.clipboard.writeText(location.href);toast("Enlace copiado.");}
-    catch{toast("Copia esta dirección: "+location.href);}
+    try{await navigator.clipboard.writeText(location.href);toast("Enlace copiado.")}
+    catch{toast("Copia: "+location.href)}
   });
 
   window.addEventListener("storage",e=>{
-    if(e.key==="fgTvMobileConfig"){state.cfg=load();apply();}
+    if(e.key==="fgReferenceConfig"){state.cfg=load();apply()}
   });
 
   if("serviceWorker" in navigator){
-    window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+    window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))
   }
 
   apply();
-  showView("home");
+  showScreen("radio");
 })();

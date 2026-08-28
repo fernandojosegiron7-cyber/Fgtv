@@ -4,99 +4,88 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow">
-  <meta name="theme-color" content="#150824">
+  <meta name="theme-color" content="#230039">
   <link rel="stylesheet" href="admin.css">
   <title>Panel privado • FG TV</title>
 </head>
 <body>
-  <main class="admin-shell">
-    <header class="admin-head">
+  <main class="admin">
+    <header>
       <div>
         <span>PANEL PRIVADO</span>
-        <h1>Editar toda la PWA</h1>
-        <p>Cambia marca, imágenes, textos, streaming, redes y colores.</p>
+        <h1>Editar diseño y contenido</h1>
+        <p>Todo lo que ves en la app principal se puede cambiar aquí.</p>
       </div>
       <a href="index.html">Ver app ↗</a>
     </header>
 
-    <form id="form" class="panel">
+    <form id="form">
       <section>
-        <h2>Marca e imágenes</h2>
-        <label>Nombre de la app
-          <input id="brandName" type="text">
-        </label>
-        <label>Logo por URL
-          <input id="logo" type="text" placeholder="https://.../logo.png">
-          <small>Acepta enlaces directos, Google Drive y GitHub.</small>
-        </label>
-        <label>O subir logo
-          <input id="logoFile" type="file" accept="image/*">
-          <small>Se optimiza automáticamente.</small>
-        </label>
-        <div class="preview"><span>Logo</span><img id="logoPreview" src="icons/icon-512.png" alt=""></div>
-
-        <label>Imagen de fondo principal por URL
-          <input id="heroBg" type="text" placeholder="https://.../fondo.jpg">
-        </label>
-        <label>O subir fondo principal
-          <input id="heroFile" type="file" accept="image/*">
-          <small>Se optimiza automáticamente.</small>
-        </label>
-        <div class="preview wide"><span>Fondo</span><img id="heroPreview" src="icons/hero-demo.jpg" alt=""></div>
+        <h2>Marca y splash</h2>
+        <label>Nombre / marca<input id="brand" type="text"></label>
+        <label>Logo por URL<input id="logo" type="text" placeholder="https://.../logo.png"></label>
+        <label>O subir logo<input id="logoFile" type="file" accept="image/*"><small>Se optimiza automáticamente.</small></label>
+        <div class="preview"><span>Logo</span><img id="logoPreview" src="assets/logo-demo.png" alt=""></div>
+        <div class="grid2">
+          <label>Color del splash<input id="splashColor" type="color"></label>
+          <label>Duración del splash (segundos)<input id="splashSeconds" type="number" min="0.2" max="5" step="0.1"></label>
+        </div>
       </section>
 
       <section>
-        <h2>Inicio</h2>
-        <label>Texto pequeño superior<input id="heroKicker" type="text"></label>
-        <label>Título principal<input id="heroTitle" type="text"></label>
-        <label>Descripción<textarea id="heroSubtitle" rows="3"></textarea></label>
+        <h2>Fondo y portada principal</h2>
+        <label>Imagen de fondo por URL<input id="heroImage" type="text" placeholder="https://.../fondo.jpg"></label>
+        <label>O subir imagen<input id="heroFile" type="file" accept="image/*"><small>Ideal 1080×1920 o vertical.</small></label>
+        <div class="preview wide"><span>Fondo</span><img id="heroPreview" src="assets/hero-demo.jpg" alt=""></div>
       </section>
 
       <section>
-        <h2>Reproductor</h2>
-        <label>Etiqueta “Ahora suena”<input id="nowLabel" type="text"></label>
-        <label>Nombre / canción actual<input id="trackTitle" type="text"></label>
-        <label>Texto debajo<input id="trackSubtitle" type="text"></label>
-        <label>Texto de estado<input id="listenersText" type="text"></label>
-        <label>URL de radio<input id="radioUrl" type="url" placeholder="https://servidor/stream"></label>
+        <h2>Textos principales</h2>
+        <label>Título principal<textarea id="heroTitle" rows="2"></textarea><small>Usa Enter para dividir en dos líneas.</small></label>
+        <label>Subtítulo<textarea id="heroSubtitle" rows="3"></textarea></label>
+        <label>Nombre de la canción / programa<input id="trackTitle" type="text"></label>
+        <label>Texto debajo del título<input id="trackArtist" type="text"></label>
+        <label>Oyentes / estado<input id="listenersLabel" type="text"></label>
+        <label>Texto inferior<input id="stationLabel" type="text"></label>
       </section>
 
       <section>
         <h2>Radio</h2>
-        <label>Título<input id="radioTitle" type="text"></label>
-        <label>Descripción<textarea id="radioSubtitle" rows="2"></textarea></label>
+        <label>URL de audio<input id="radioUrl" type="url" placeholder="https://servidor/stream"></label>
       </section>
 
       <section>
         <h2>TV</h2>
-        <label>Título<input id="tvTitle" type="text"></label>
+        <label>URL de TV / HLS<input id="tvUrl" type="url" placeholder="https://servidor/canal.m3u8"></label>
+        <label>Título de sección<input id="tvTitle" type="text"></label>
+        <label>Etiqueta pequeña<input id="tvKicker" type="text"></label>
+        <label>Titular<input id="tvHeadline" type="text"></label>
         <label>Descripción<textarea id="tvSubtitle" rows="2"></textarea></label>
-        <label>URL de TV / .m3u8<input id="tvUrl" type="url" placeholder="https://servidor/canal.m3u8"></label>
-        <label>Título de información<input id="tvInfoTitle" type="text"></label>
-        <label>Texto de información<textarea id="tvInfoText" rows="2"></textarea></label>
+        <label>Nombre del canal<input id="tvChannel" type="text"></label>
       </section>
 
       <section>
-        <h2>Redes</h2>
+        <h2>Redes y compartir</h2>
         <label>Facebook<input id="facebook" type="url" placeholder="https://facebook.com/..."></label>
         <label>Instagram<input id="instagram" type="url" placeholder="https://instagram.com/..."></label>
-        <label>WhatsApp (número con código país)<input id="whatsapp" type="text" placeholder="50499999999"></label>
+        <label>WhatsApp<input id="whatsapp" type="text" placeholder="50499999999"></label>
       </section>
 
       <section>
         <h2>Colores</h2>
         <div class="colors">
-          <label>Principal<input id="accent" type="color"></label>
-          <label>Secundario<input id="accent2" type="color"></label>
-          <label>Detalle<input id="accent3" type="color"></label>
+          <label>Rosa principal<input id="pink" type="color"></label>
+          <label>Rosa secundario<input id="pink2" type="color"></label>
+          <label>Morado oscuro<input id="deep" type="color"></label>
+          <label>Morado secundario<input id="deep2" type="color"></label>
         </div>
       </section>
 
       <div class="actions">
-        <button class="save" type="submit">Guardar todos los cambios</button>
+        <button class="save" type="submit">Guardar cambios</button>
         <button id="reset" class="reset" type="button">Restablecer demo</button>
       </div>
-      <p class="note">Esta versión funciona sin Supabase: los cambios se guardan en este navegador. Después podemos conectar un backend para administrarla desde otro dispositivo.</p>
+      <p class="note">Sin Supabase por ahora: los cambios se guardan en este navegador. Cuando el diseño esté listo, conectamos administración remota.</p>
     </form>
   </main>
   <div id="toast" class="toast"></div>

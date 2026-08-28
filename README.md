@@ -1,28 +1,40 @@
-# FG TV Mobile PWA editable
+# FG TV PWA — estilo fiel a la referencia
 
-## Rutas
-- App pública: `/`
-- Panel privado: `/admin.html`
+Esta versión fue rehecha para acercarse mucho más al diseño de referencia:
 
-## Todo editable desde el panel
-- Nombre
-- Logo por URL o subida
-- Imagen principal por URL o subida
-- Título y textos
-- Radio URL
-- TV URL / HLS .m3u8
+- Splash de color sólido con logo centrado.
+- Pantalla principal con fondo visual a pantalla completa.
+- Barra superior con marca, redes y compartir.
+- Título grande centrado.
+- Reproductor flotante tipo glass morado.
+- Barra rosa, EN VIVO, oyentes, volumen y controles.
+- Texto inferior de estación.
+- Pantalla de compartir con tarjetas grandes tipo referencia.
+- Pantalla TV independiente, accesible desde el selector inferior.
+- Responsive móvil primero.
+- Panel privado en `/admin.html`.
+
+## Editable desde el panel
+- Marca
+- Logo
+- Color y duración del splash
+- Imagen de fondo
+- Título y subtítulo
+- Programa/canción actual
+- Oyentes
+- URL de radio
+- URL de TV/HLS
+- Textos de TV
 - Facebook
 - Instagram
 - WhatsApp
-- 3 colores principales
-- Textos de Radio y TV
+- Colores principales
 
 ## Vercel
-- Framework Preset: Other
-- Build Command: vacío
-- Output Directory: vacío
-- Variables de entorno: ninguna
+Framework Preset: Other
+Build Command: vacío
+Output Directory: vacío
+Variables de entorno: ninguna
 
-## Importante
-Esta primera versión guarda los cambios en localStorage del navegador.
-Para administrar la app desde otro teléfono/PC o sincronizar muchos dispositivos se necesita conectar un backend más adelante.
+## Limitación actual
+Sin backend: los cambios se guardan en el navegador local. Para administración remota se conecta backend después.
