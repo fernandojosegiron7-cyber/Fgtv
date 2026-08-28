@@ -157,25 +157,559 @@ input[type=color]{display:block;margin-top:10px;width:90px;height:44px;padding:4
 .toast.show{opacity:1;transform:translate(-50%,0)}
 @keyframes spin{to{transform:rotate(360deg)}}
 @keyframes eq{from{height:8px;opacity:.35}to{height:48px;opacity:1}}
-@media (max-width:1150px){
-  .app-shell{grid-template-columns:1fr}
-  .sidebar{grid-template-columns:1fr 1fr;display:grid}
+
+/* =========================
+   RESPONSIVE PRO SYSTEM
+   Desktop / TV / Tablet / Mobile
+   ========================= */
+
+/* Large TV / wide desktop */
+@media (min-width:1600px){
+  .app-shell{
+    width:min(1560px,calc(100% - 48px));
+    grid-template-columns:340px 1fr;
+    gap:22px;
+  }
+  .content{gap:22px}
+  .topbar,.player-panel,.showcase-card,.tv-panel,.info-banner,.install-card{
+    border-radius:34px;
+  }
+  .disk-zone{height:390px}
+  .album-art{width:230px;height:230px}
+  .ring-1{width:300px;height:300px}
+  .ring-2{width:365px;height:365px}
 }
-@media (max-width:920px){
-  .topbar,.hero-grid,.bottom-grid{grid-template-columns:1fr}
-  .topbar{padding:22px}
-  .header-actions{width:100%;justify-content:flex-start;flex-wrap:wrap}
+
+/* Laptop / medium desktop */
+@media (max-width:1280px){
+  .app-shell{
+    grid-template-columns:280px minmax(0,1fr);
+  }
+  .brand-copy strong{font-size:18px}
+  .hero-grid{grid-template-columns:1fr}
+  .showcase-card{min-height:unset}
+  .feature-stack{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .bottom-grid{grid-template-columns:minmax(0,1fr) 320px}
 }
-@media (max-width:720px){
-  .app-shell{width:min(100% - 18px,1380px);margin:9px auto 18px;gap:14px}
-  .sidebar{display:flex}
-  .brand-card,.nav,.mini-panel,.topbar,.player-panel,.showcase-card,.tv-panel,.info-banner,.install-card{border-radius:24px}
-  .topbar h1{font-size:40px}
-  .player-top,.tv-head{flex-direction:column}
-  .disk-zone{height:300px}
-  .album-art{width:180px;height:180px}.ring-1{width:235px;height:235px}.ring-2{width:285px;height:285px}
-  .player-controls{flex-direction:column;text-align:center}
-  .control-copy small{max-width:none}
-  .metric-band{grid-template-columns:1fr}
+
+/* Tablet landscape / small laptop */
+@media (max-width:1050px){
+  .app-shell{
+    grid-template-columns:1fr;
+    width:min(100% - 24px,1200px);
+    margin:12px auto 24px;
+  }
+
+  .sidebar{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);
+    gap:12px;
+  }
+
+  .brand-card{
+    grid-column:1;
+    min-width:0;
+  }
+
+  .nav{
+    grid-column:2;
+    grid-row:1;
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    align-items:stretch;
+  }
+
+  .nav-item{
+    min-width:0;
+    justify-content:center;
+    text-align:center;
+    padding:0 10px;
+  }
+
+  .nav-item span{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+
+  .stats-panel,.social-panel{
+    display:none;
+  }
+
+  .topbar{
+    display:grid;
+    grid-template-columns:minmax(0,1fr) auto;
+    align-items:center;
+  }
+
+  .topbar h1{
+    max-width:760px;
+  }
+
+  .bottom-grid{
+    grid-template-columns:1fr;
+  }
 }
-@media (prefers-reduced-motion: reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* Tablet portrait */
+@media (max-width:820px){
+  .app-shell{
+    width:min(100% - 18px,900px);
+    margin:9px auto 18px;
+    gap:12px;
+  }
+
+  .sidebar{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .brand-card{
+    padding:14px;
+  }
+
+  .logo-wrap{
+    width:58px;
+    height:58px;
+    border-radius:18px;
+  }
+
+  .brand-copy strong{
+    font-size:17px;
+  }
+
+  .brand-copy span{
+    font-size:8px;
+  }
+
+  .nav{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding:8px;
+    scrollbar-width:none;
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .nav::-webkit-scrollbar{display:none}
+
+  .nav-item{
+    flex:0 0 auto;
+    min-width:145px;
+    min-height:52px;
+    justify-content:center;
+  }
+
+  .topbar{
+    grid-template-columns:1fr;
+    padding:20px;
+  }
+
+  .topbar h1{
+    font-size:clamp(34px,8vw,48px);
+    line-height:.98;
+  }
+
+  .header-actions{
+    width:100%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    margin-top:4px;
+  }
+
+  .pill-btn{
+    width:100%;
+    min-width:0;
+  }
+
+  .hero-grid{
+    grid-template-columns:1fr;
+  }
+
+  .player-panel,.showcase-card,.tv-panel,.info-banner,.install-card{
+    padding:20px;
+    border-radius:24px;
+  }
+
+  .player-top,.tv-head{
+    align-items:flex-start;
+  }
+
+  .feature-stack{
+    grid-template-columns:1fr;
+  }
+
+  .metric-band{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .disk-zone{
+    height:300px;
+  }
+
+  .album-art{
+    width:178px;
+    height:178px;
+  }
+
+  .ring-1{
+    width:230px;
+    height:230px;
+  }
+
+  .ring-2{
+    width:278px;
+    height:278px;
+  }
+
+  .tv-actions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .status-chip{
+    grid-column:1/-1;
+    text-align:center;
+    margin-left:0;
+  }
+}
+
+/* Phones */
+@media (max-width:600px){
+  body{
+    background:
+      radial-gradient(circle at 20% 10%,rgba(138,92,255,.13),transparent 20rem),
+      radial-gradient(circle at 90% 35%,rgba(49,214,255,.10),transparent 18rem),
+      linear-gradient(180deg,#060710,#070811 60%,#090b13);
+  }
+
+  .app-shell{
+    width:calc(100% - 12px);
+    margin:6px auto 14px;
+    gap:9px;
+  }
+
+  .sidebar{
+    gap:9px;
+  }
+
+  .brand-card{
+    border-radius:20px;
+    padding:12px;
+  }
+
+  .logo-wrap{
+    width:52px;
+    height:52px;
+    border-radius:16px;
+    padding:4px;
+  }
+
+  .brand-copy strong{
+    font-size:16px;
+  }
+
+  .brand-copy span{
+    font-size:7.5px;
+    letter-spacing:.18em;
+  }
+
+  .nav{
+    border-radius:18px;
+    padding:6px;
+  }
+
+  .nav-item{
+    min-width:124px;
+    min-height:48px;
+    border-radius:14px;
+    font-size:12px;
+    padding:0 10px;
+  }
+
+  .content{
+    gap:9px;
+  }
+
+  .topbar{
+    padding:17px 16px;
+    border-radius:20px;
+  }
+
+  .eyebrow{
+    font-size:8px;
+    letter-spacing:.13em;
+  }
+
+  .topbar h1{
+    font-size:clamp(30px,10vw,39px);
+    letter-spacing:-.045em;
+  }
+
+  .topbar p{
+    font-size:13px;
+    line-height:1.5;
+    margin-top:10px;
+  }
+
+  .header-actions{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .pill-btn{
+    min-height:46px;
+    border-radius:14px;
+    font-size:13px;
+  }
+
+  .player-panel,.showcase-card,.tv-panel,.info-banner,.install-card{
+    border-radius:20px;
+    padding:16px;
+  }
+
+  .player-top,.tv-head{
+    flex-direction:column;
+    gap:10px;
+  }
+
+  .player-top h2,.tv-head h2{
+    font-size:25px;
+    line-height:1.02;
+  }
+
+  .pulse-badge{
+    padding:8px 10px;
+    font-size:8px;
+  }
+
+  .disk-zone{
+    height:250px;
+  }
+
+  .album-art{
+    width:148px;
+    height:148px;
+    padding:6px;
+  }
+
+  .ring-1{
+    width:192px;
+    height:192px;
+  }
+
+  .ring-2{
+    width:225px;
+    height:225px;
+  }
+
+  .eq-bars{
+    bottom:16px;
+    height:40px;
+    gap:4px;
+  }
+
+  .eq-bars span{
+    width:4px;
+  }
+
+  .mega-play{
+    width:72px;
+    height:72px;
+    font-size:22px;
+  }
+
+  .player-controls{
+    flex-direction:column;
+    text-align:center;
+    gap:12px;
+  }
+
+  .control-copy strong{
+    font-size:14px;
+  }
+
+  .control-copy small{
+    max-width:none;
+    font-size:11px;
+  }
+
+  .volume-wrap{
+    margin-top:18px;
+    gap:8px;
+    font-size:11px;
+  }
+
+  .feature-stack article{
+    border-radius:17px;
+    padding:15px;
+  }
+
+  .metric-band{
+    grid-template-columns:1fr;
+  }
+
+  .metric-band div{
+    border-radius:15px;
+    padding:14px;
+  }
+
+  .tv-stage{
+    border-radius:16px;
+  }
+
+  .tv-poster{
+    padding:14px;
+  }
+
+  .tv-poster img{
+    width:72px;
+    height:72px;
+    border-radius:20px;
+  }
+
+  .tv-poster strong{
+    font-size:17px;
+  }
+
+  .tv-poster small{
+    font-size:10px;
+    line-height:1.4;
+    max-width:240px;
+  }
+
+  .tv-poster button{
+    padding:10px 13px;
+    border-radius:13px;
+    font-size:11px;
+  }
+
+  .tv-actions{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+
+  .status-chip{
+    grid-column:auto;
+  }
+
+  .info-banner h3,.install-card h3{
+    font-size:24px;
+  }
+
+  .info-banner p,.install-card p{
+    font-size:12px;
+  }
+
+  .admin-panel{
+    width:100%;
+    padding:
+      max(18px,env(safe-area-inset-top))
+      16px
+      max(24px,env(safe-area-inset-bottom));
+  }
+
+  .admin-top h2{
+    font-size:22px;
+  }
+
+  .actions-row{
+    grid-template-columns:1fr;
+  }
+
+  input[type=text],input[type=url],textarea{
+    font-size:16px; /* Prevent iOS zoom */
+  }
+
+  .toast{
+    width:calc(100% - 28px);
+    text-align:center;
+    bottom:max(14px,env(safe-area-inset-bottom));
+  }
+}
+
+/* Very small phones */
+@media (max-width:380px){
+  .app-shell{
+    width:calc(100% - 8px);
+  }
+
+  .brand-copy strong{
+    font-size:14px;
+  }
+
+  .nav-item{
+    min-width:112px;
+    font-size:11px;
+  }
+
+  .topbar h1{
+    font-size:29px;
+  }
+
+  .disk-zone{
+    height:230px;
+  }
+
+  .album-art{
+    width:136px;
+    height:136px;
+  }
+
+  .ring-1{
+    width:176px;
+    height:176px;
+  }
+
+  .ring-2{
+    width:206px;
+    height:206px;
+  }
+}
+
+/* Landscape phones */
+@media (max-height:520px) and (orientation:landscape){
+  .app-shell{
+    width:calc(100% - 16px);
+  }
+
+  .sidebar{
+    display:none;
+  }
+
+  .topbar{
+    padding:14px 16px;
+  }
+
+  .topbar h1{
+    font-size:30px;
+  }
+
+  .disk-zone{
+    height:210px;
+  }
+
+  .album-art{
+    width:135px;
+    height:135px;
+  }
+
+  .ring-1{
+    width:175px;
+    height:175px;
+  }
+
+  .ring-2{
+    width:205px;
+    height:205px;
+  }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*:before,*:after{
+    animation:none!important;
+    transition:none!important;
+    scroll-behavior:auto!important;
+  }
+}

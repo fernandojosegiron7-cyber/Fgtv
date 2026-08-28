@@ -1,19 +1,20 @@
-# FG Ultra Media PWA
+# FG Ultra Media PWA — Responsive Edition
 
-Versión visual mejorada, estática y lista para Vercel.
+Esta versión está optimizada para:
+- Smart TV / pantallas grandes
+- PC y laptop
+- Tablet horizontal y vertical
+- iPhone y Android
+- Teléfonos pequeños desde 320 px
+- Modo horizontal en teléfono
 
-## Despliegue en Vercel
+## Vercel
 - Framework Preset: Other
 - Build Command: vacío
 - Output Directory: vacío
 - Variables de entorno: ninguna
 
-## Qué trae
-- Interfaz premium glass/neon
-- Radio en vivo
-- TV en vivo compatible con HLS .m3u8
-- Panel local para administrar nombre, logo, links, textos y color
-- Instalación como PWA
-
-## Nota
-Esta versión guarda la configuración localmente en el navegador. Para sincronizar entre dispositivos diferentes después conectamos backend.
+## Responsive
+En escritorio usa sidebar y paneles amplios.
+En tablet reorganiza navegación y tarjetas.
+En móvil la navegación es horizontal desplazable, los controles ocupan el ancho correcto y el panel de administración se adapta a la pantalla completa.
